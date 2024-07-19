@@ -117,7 +117,7 @@ publishMods {
 
 	modrinth {
 		accessToken = System.getenv("MODRINTH_TOKEN")
-		projectId = "5pK8WJ7f"
+		projectId = "lZze5Hii"
 		minecraftVersions.add(providers.gradleProperty("minecraft_version"))
 		requires("fabric-api")
 		optional("polymer")
