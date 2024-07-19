@@ -1,10 +1,9 @@
+image:
+  file: .gitpod/Dockerfile
 
 tasks:
-  # Install Java 21 using sdkman
-  - init: |
-      sdk install java 21
-      sdk use java 21
-      ./gradlew build
+  # Build to get everyting
+  - init: ./gradlew build
 
 vscode:
   extensions:
