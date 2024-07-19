@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "bakers-tools",
+	"version": "${version}",
+	"name": "Polymer Tools",
+	"description": "Extra Tools for Servers",
+	"authors": [
+		"Merith.TK (Code)",
+		"Daedreus (Assets/Code)"
+	],
+	"contact": {
+		"sources": "https://github.com/Merith-TK/bakers-tools"
+	},
+	"license": "MIT",
+	"icon": "assets/ovenlib/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "xyz.merith.Bakery.BakersTools.BakersToolsEntrypoint"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"recommends": {
+		"polymer": ">=0.9.5"
+	}
+}
