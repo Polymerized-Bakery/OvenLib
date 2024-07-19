@@ -1,0 +1,18 @@
+
+tasks:
+  # Install Java 21 using sdkman
+  - name: Install Java 21
+    command: |
+      sdk install java 21
+
+# Ensure Java 21 is set as default
+  - name: Set Java 21 as default
+    command: |
+      sdk use java 21
+
+# Build Gradle
+  - init: ./gradlew build
+
+vscode:
+  extensions:
+    - vscjava.vscode-java-pack
