@@ -1,0 +1,6 @@
+{
+    "gradle.reuseTerminals": "all",
+    "files.associations": {
+        "*.json": "jsonc"
+    }
+}
