@@ -66,7 +66,7 @@ public class GroupFactory {
      * @param group      the item group to be registered
      */
     public void register(Identifier identifier, ItemGroup group) {
-        if (InternalServerRegistry.ITEM_GROUPS.contains(identifier)) { // TODO: https://github.com/patbox/polymer
+        if (InternalServerRegistry.ITEM_GROUPS.contains(identifier)) { // TODO: https://github.com/patbox/polymer/pull/142
             OvenDoor.LOGGER.warn("Group {}:{} is already registered, skipping", identifier.getNamespace(), identifier.getPath());
         } else {
             PolymerItemGroupUtils.registerPolymerItemGroup(identifier, group);
