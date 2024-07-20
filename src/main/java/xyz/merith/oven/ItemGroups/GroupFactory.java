@@ -1,13 +1,17 @@
-package xyz.merith.oven.ItemGroup;
+package xyz.merith.oven.ItemGroups;
 
 import eu.pb4.polymer.core.api.item.PolymerItemGroupUtils;
+import eu.pb4.polymer.core.impl.InternalServerRegistry;
+import eu.pb4.polymer.core.impl.PolymerImpl;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import xyz.merith.oven.OvenDoor;
 
 /**
  * A factory class for creating custom {@link ItemGroup} builders with the Polymer API.
@@ -21,7 +25,7 @@ public class GroupFactory {
      * @return a new {@link ItemGroup.Builder} instance
      */
     public ItemGroup.Builder createGroup(Identifier id) {
-        return createGroup(id, Text.literal("Baked Items"));
+        return createGroup(id, Text.literal("Unnamed Bakery"));
     }
 
     /**
@@ -48,5 +52,25 @@ public class GroupFactory {
                 .displayName(name)
                 .icon(() -> new ItemStack(icon));
         return NEW_BUILDER;
+    }
+
+
+    /**
+     * A convenience method that acts as a shortcut for registering a custom {@link ItemGroup} with the specified identifier.
+     * <p>
+     * This method internally calls {@link PolymerItemGroupUtils#registerPolymerItemGroup(Identifier, ItemGroup)} to perform
+     * the actual registration.
+     * </p>
+     *
+     * @param identifier the identifier for the item group
+     * @param group      the item group to be registered
+     */
+    public void register(Identifier identifier, ItemGroup group) {
+        if (InternalServerRegistry.ITEM_GROUPS.contains(identifier)) { // TODO: https://github.com/patbox/polymer
+            OvenDoor.LOGGER.warn("Group {}:{} is already registered, skipping", identifier.getNamespace(), identifier.getPath());
+        } else {
+            PolymerItemGroupUtils.registerPolymerItemGroup(identifier, group);
+            OvenDoor.LOGGER.info("Registering Group {}:{} as {}", identifier.getNamespace(), identifier.getPath(), group.getDisplayName());
+        }
     }
 }
