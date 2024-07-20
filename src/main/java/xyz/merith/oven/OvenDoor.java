@@ -10,6 +10,10 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import xyz.merith.oven.Tests.TestEntrypoint;
+import xyz.merith.oven.Tests.TestTools;
+
+import java.io.File;
 
 
 public class OvenDoor implements ModInitializer {
@@ -24,14 +28,21 @@ public class OvenDoor implements ModInitializer {
         LOGGER.info("Preheating Oven");
         PolymerResourcePackUtils.addModAssets("ovenlib");
 
-        // This is the intial creation, in hopes that rebakeOven lets me overwrite this later
         LOGGER.info("Baking ItemGroup");
         PolymerItemGroupUtils.registerPolymerItemGroup(Identifier.of("ovenlib:itemgroup"), OVENLIB_GROUP.build());
-        LOGGER.info("Oven Heated!");
-    }
 
-    public void rebakeOven() {
-        LOGGER.info("ReBaking ItemGroup");
-        PolymerItemGroupUtils.registerPolymerItemGroup(Identifier.of("ovenlib:itemgroup"), OVENLIB_GROUP.build());
+        /*
+         * This realistically should never run in production,
+         * but this allows for building and running tests in a
+         * jank as fuck way
+        */
+        String cwd = System.getProperty("user.dir");
+        File cwdFile = new File(cwd);
+        File buildGradleFile = new File(cwdFile.getParentFile(), "build.gradle");
+        if (cwdFile.getName().equals("run") && buildGradleFile.exists()) {
+            new TestEntrypoint().start();
+        }
+
+        LOGGER.info("Oven Heated!");
     }
 }
