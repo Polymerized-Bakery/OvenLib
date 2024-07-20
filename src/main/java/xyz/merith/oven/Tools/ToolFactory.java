@@ -1,11 +1,14 @@
-package xyz.merith.oven;
+package xyz.merith.oven.Tools;
 
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import xyz.merith.oven.ToolTemplates.*;
+import xyz.merith.oven.Tools.Templates.*;
 
+/**
+ * A factory class for creating and registering tool items.
+ */
 public class ToolFactory {
     public static class Tools {
         public final Item AXE;
@@ -14,6 +17,15 @@ public class ToolFactory {
         public final Item SHOVEL;
         public final Item SWORD;
 
+        /**
+         * Constructs a new Tools container with the specified tool items.
+         *
+         * @param axe     the axe item
+         * @param hoe     the hoe item
+         * @param pickaxe the pickaxe item
+         * @param shovel  the shovel item
+         * @param sword   the sword item
+         */
         public Tools(Item axe, Item hoe, Item pickaxe, Item shovel, Item sword) {
             this.AXE = axe;
             this.HOE = hoe;
@@ -23,6 +35,14 @@ public class ToolFactory {
         }
     }
 
+    /**
+     * Registers a set of tool items (axe, hoe, pickaxe, shovel, sword) with the specified namespace and base name.
+     *
+     * @param namespace the namespace for the tool items (usually the mod ID)
+     * @param basename  the base name for the tools (e.g., "copper"), which will be used to generate item IDs
+     * @param material  the material of the tools
+     * @return a {@link Tools} object containing the registered tool items
+     */
     public Tools registerTools(String namespace, String basename, ToolMaterial material) {
         Item axe = Registry.register(Registries.ITEM, Identifier.of(namespace, basename+"_axe"),
                 new Axe(

@@ -1,22 +1,21 @@
 {
 	"schemaVersion": 1,
-	"id": "bakers-tools",
+	"id": "ovenlib",
 	"version": "${version}",
-	"name": "Polymer Tools",
-	"description": "Extra Tools for Servers",
+	"name": "Oven Library",
+	"description": "Easy to use Library for the Polyermerized Bakery",
 	"authors": [
-		"Merith.TK (Code)",
-		"Daedreus (Assets/Code)"
+		"Merith.TK (Code)"
 	],
 	"contact": {
-		"sources": "https://github.com/Merith-TK/bakers-tools"
+		"sources": "https://github.com/polymerized-bakery/ovenlib"
 	},
 	"license": "MIT",
 	"icon": "assets/ovenlib/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-          "xyz.merith.Bakery.BakersTools.BakersToolsEntrypoint"
+          "xyz.merith.oven.OvenDoor"
 		]
 	},
 	"depends": {

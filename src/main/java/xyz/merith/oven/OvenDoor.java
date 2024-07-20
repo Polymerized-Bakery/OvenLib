@@ -14,17 +14,24 @@ import org.slf4j.LoggerFactory;
 
 public class OvenDoor implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("ovenlib");
-
-    public static RegistryKey<ItemGroup> OVENLIB_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of("ovenlib", "itemgroup"));
     public static ItemGroup.Builder OVENLIB_GROUP = PolymerItemGroupUtils.builder()
-            .displayName(Text.translatable("ovenlib.itemgroup"))
+            .displayName(Text.literal("Baked Items"))
             .icon(() -> new ItemStack(Items.BLAST_FURNACE));
+    public static RegistryKey<ItemGroup> OVENLIB_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of("ovenlib", "itemgroup"));
+
     @Override
     public void onInitialize() {
         LOGGER.info("Preheating Oven");
         PolymerResourcePackUtils.addModAssets("ovenlib");
+
+        // This is the intial creation, in hopes that rebakeOven lets me overwrite this later
         LOGGER.info("Baking ItemGroup");
         PolymerItemGroupUtils.registerPolymerItemGroup(Identifier.of("ovenlib:itemgroup"), OVENLIB_GROUP.build());
         LOGGER.info("Oven Heated!");
+    }
+
+    public void rebakeOven() {
+        LOGGER.info("ReBaking ItemGroup");
+        PolymerItemGroupUtils.registerPolymerItemGroup(Identifier.of("ovenlib:itemgroup"), OVENLIB_GROUP.build());
     }
 }
