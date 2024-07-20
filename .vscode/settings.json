@@ -2,5 +2,6 @@
     "gradle.reuseTerminals": "all",
     "files.associations": {
         "*.json": "jsonc"
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "automatic"
 }

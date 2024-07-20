@@ -111,9 +111,11 @@ publishMods {
 	changelog = System.getenv("CHANGELOG")  ?: "No Changelog Provided for Release"
 	type = STABLE
 	file = remapJar.archiveFile
+	additionalFiles.from(sourcesJar.archiveFile)
 	modLoaders.add("fabric")
 
 	version = project.version
+	displayName = "OvenLib "+ project.version
 
 	modrinth {
 		accessToken = System.getenv("MODRINTH_TOKEN")
