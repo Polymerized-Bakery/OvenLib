@@ -10,12 +10,13 @@
 
 package xyz.merith.oven.Tests;
 
+import xyz.merith.oven.Armors.ArmorFactory;
 import xyz.merith.oven.OvenDoor;
 
 public class TestEntrypoint {
     public void start() {
         OvenDoor.LOGGER.info("Generating Tests");
         new TestGroups();
+        new ArmorFactory();
     }
-
 }

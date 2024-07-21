@@ -4,6 +4,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import xyz.merith.oven.Armors.ArmorFactory;
 import xyz.merith.oven.ItemGroups.GroupFactory;
 import xyz.merith.oven.OvenDoor;
 import xyz.merith.oven.Tools.ToolFactory;
@@ -15,7 +16,7 @@ public class TestGroups {
 
         // Create new tools for testing
         ToolFactory.Tools NEW_TOOLS = new ToolFactory().registerTools("ovenlib", "test", TestTools.TOOL_MATERIAL);
-
+        ArmorFactory.Armors NEW_ARMOR = new ArmorFactory().registerArmors("ovenlib", "test");
         // Test Group without a name or icon
         ItemGroup.Builder ITEM_GROUP1 = new GroupFactory().createGroup(Identifier.of("ovenlib:testgroup1"));
 
@@ -61,6 +62,10 @@ public class TestGroups {
             e.add(NEW_TOOLS.PICKAXE);
             e.add(NEW_TOOLS.SHOVEL);
             e.add(NEW_TOOLS.SWORD);
+            e.add(NEW_ARMOR.HELMET);
+            e.add(NEW_ARMOR.BODY);
+            e.add(NEW_ARMOR.LEGGINGS);
+            e.add(NEW_ARMOR.BOOTS);
         });
 
         // Register the fourth test group
