@@ -2,19 +2,19 @@ package xyz.merith.oven.Blocks;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import xyz.merith.oven.Blocks.Templates.CustomBlock;
+import xyz.merith.oven.Blocks.Templates.SolidBlock;
 
 /**
  * A factory class for creating and registering custom blocks.
  */
 public class BlockFactory {
 
+    // TODO, add blocktype switchers, currently only solid blocks are supported
     /**
      * Registers a custom block with the specified namespace and base name.
      *
@@ -23,12 +23,10 @@ public class BlockFactory {
      * @param settings  the settings of the block
      * @return the registered block
      */
-    public Block registerBlock(String namespace, String basename, AbstractBlock.Settings settings) {
-        Block block = new CustomBlock(
-                namespace, basename,
-                settings);
+    public Block registerSolidBlock(String namespace, String basename, AbstractBlock.Settings settings) {
+        Block solidBlock = new SolidBlock(settings);
 
-        Block registeredBlock = Registry.register(Registries.BLOCK, Identifier.of(namespace, basename), block);
+        Block registeredBlock = Registry.register(Registries.BLOCK, Identifier.of(namespace, basename), solidBlock);
 
         // Register the block item
         Item blockItem = new BlockItem(registeredBlock, new Item.Settings());
