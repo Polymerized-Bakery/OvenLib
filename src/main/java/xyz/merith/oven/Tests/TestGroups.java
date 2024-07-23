@@ -33,7 +33,9 @@ public class TestGroups {
         // Create new tools for testing
         ToolFactory.Tools NEW_TOOLS = new ToolFactory().registerTools("ovenlib", "test", TOOL_MATERIAL);
         ArmorFactory.Armors NEW_ARMOR = new ArmorFactory().registerArmors("ovenlib", "test");
-        Block NEW_BLOCK = new BlockFactory().registerSolidBlock("ovenlib", "test_block", AbstractBlock.Settings.create());
+        Block NEW_SOLID_BLOCK = new BlockFactory().registerSolidBlock("ovenlib", "test_solid_block", AbstractBlock.Settings.create());
+        Block NEW_CLEAR_BLOCK = new BlockFactory().registerTransparentBlock("ovenlib", "test_clear_block", AbstractBlock.Settings.create());
+
         // Test Group with a translatable name and an icon
         ItemGroup.Builder ITEM_GROUP = new GroupFactory().createGroup(Identifier.of("ovenlib:testgroup"), Text.translatable("ovenlib.itemgroup"), Items.DIAMOND);
 
@@ -47,7 +49,8 @@ public class TestGroups {
             e.add(NEW_ARMOR.BODY);
             e.add(NEW_ARMOR.LEGGINGS);
             e.add(NEW_ARMOR.BOOTS);
-            e.add(NEW_BLOCK);
+            e.add(NEW_SOLID_BLOCK);
+            e.add(NEW_CLEAR_BLOCK);
         });
 
         // Register the fourth test group
