@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "ovenlib:block/test_block" }
+  }
+}
