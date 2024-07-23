@@ -16,12 +16,12 @@ import xyz.merith.oven.Blocks.Templates.CustomBlock;
 public class BlockFactory {
 
     /**
-     * Registers a custom block with the specified namespace and base name.
+     * Registers a custom solid block with the specified namespace and base name.
      *
-     * @param namespace the namespace for the block (usually the mod ID)
-     * @param basename  the base name for the block, which will be used to generate block IDs
-     * @param settings  the settings of the block
-     * @return the registered block
+     * @param namespace the namespace for the block (usually the mod ID).
+     * @param basename  the base name for the block, which will be used to generate block IDs.
+     * @param settings  the settings of the block.
+     * @return the registered block.
      */
     public Block registerSolidBlock(String namespace, String basename, AbstractBlock.Settings settings) {
         Block newBlock = new CustomBlock(namespace, basename, settings, BlockModelType.FULL_BLOCK);
@@ -34,6 +34,14 @@ public class BlockFactory {
         return registeredBlock;
     }
 
+    /**
+     * Registers a custom transparent block with the specified namespace and base name.
+     *
+     * @param namespace the namespace for the block (usually the mod ID).
+     * @param basename  the base name for the block, which will be used to generate block IDs.
+     * @param settings  the settings of the block.
+     * @return the registered block.
+     */
     public Block registerTransparentBlock(String namespace, String basename, AbstractBlock.Settings settings) {
         Block newBlock = new CustomBlock(namespace, basename, settings, BlockModelType.TRANSPARENT_BLOCK);
 
