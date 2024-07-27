@@ -25,6 +25,6 @@
 		"fabric-api": "*"
 	},
 	"recommends": {
-		"polymer": ">=0.9.5"
+		"polymer-core": ">=0.9.5"
 	}
 }
