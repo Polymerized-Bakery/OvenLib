@@ -1,10 +1,11 @@
 package xyz.merith.oven.Armors;
 
 import net.minecraft.item.*;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.util.Arm;
 import net.minecraft.util.Identifier;
 import xyz.merith.oven.Tools.ToolFactory;
 
@@ -50,12 +51,12 @@ public class ArmorFactory {
      * @param material  the material of the tools
      * @return a {@link ToolFactory.Tools} object containing the registered tool items
      */
-    public Armors registerArmors(String namespace, String basename, RegistryEntry<ArmorMaterial> material) {
+    public Armors registerArmors(String namespace, String basename, ArmorMaterial material) {
         ArmorItem helmet = Registry.register(Registries.ITEM, Identifier.of(namespace, basename+"_helmet"),
                 new ArmorTemplate(
                         Items.CHAINMAIL_HELMET,
                         material,
-                        ArmorItem.Type.HELMET,
+                        EquipmentType.HELMET,
                         new Item.Settings(),
                         namespace, basename+"_helmet"));
 
@@ -63,7 +64,7 @@ public class ArmorFactory {
                 new ArmorTemplate(
                         Items.CHAINMAIL_CHESTPLATE,
                         material,
-                        ArmorItem.Type.BODY,
+                        EquipmentType.BODY,
                         new Item.Settings(),
                         namespace, basename+"_chestplate"));
 
@@ -71,7 +72,7 @@ public class ArmorFactory {
                 new ArmorTemplate(
                         Items.CHAINMAIL_LEGGINGS,
                         material,
-                        ArmorItem.Type.LEGGINGS,
+                        EquipmentType.LEGGINGS,
                         new Item.Settings(),
                         namespace, basename+"_leggings"));
 
@@ -79,7 +80,7 @@ public class ArmorFactory {
                 new ArmorTemplate(
                         Items.CHAINMAIL_BOOTS,
                         material,
-                        ArmorItem.Type.BOOTS,
+                        EquipmentType.BOOTS,
                         new Item.Settings(),
                         namespace, basename+"_boots"));
 

@@ -7,6 +7,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import xyz.merith.oven.Armors.ArmorFactory;
@@ -14,21 +15,22 @@ import xyz.merith.oven.Blocks.BlockFactory;
 import xyz.merith.oven.ItemGroups.GroupFactory;
 import xyz.merith.oven.OvenDoor;
 import xyz.merith.oven.Tools.ToolFactory;
-import xyz.merith.oven.Tools.ToolMaterialFactory;
+
 
 // Class for testing Item Groups creation
 public class TestGroups {
     public TestGroups() {
         OvenDoor.LOGGER.info("Generating Test Groups");
 
-        ToolMaterial TOOL_MATERIAL = ToolMaterialFactory.Generate(
+        ToolMaterial TOOL_MATERIAL = new ToolMaterial(
                 BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
-                1024,
-                10F,
-                5F,
-                10,
-                () -> Ingredient.ofItems(Items.DIRT)
+                1024, // 1024 durability
+                10F, // 10F mining speed
+                5F, // 5F attack damage
+                10, // 10 enchantability
+                ItemTags.DIRT // Repair ingredient
         );
+
 
         // Create new tools for testing
         ToolFactory.Tools NEW_TOOLS = new ToolFactory().registerTools("ovenlib", "test", TOOL_MATERIAL);

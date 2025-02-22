@@ -45,40 +45,41 @@ public class ToolFactory {
      */
     public Tools registerTools(String namespace, String basename, ToolMaterial material) {
         Item axe = Registry.register(Registries.ITEM, Identifier.of(namespace, basename+"_axe"),
+                // TODO: Update Attribute Modifiers to 1.21.4
                 new Axe(
                         Items.IRON_AXE,
                         material,
-                        new Item.Settings()
-                                .attributeModifiers(AxeItem.createAttributeModifiers(material, 6.5F, -3.15F)),
+                        new Item.Settings(),
+//                                .attributeModifiers(AxeItem.createAttributeModifiers(material, 6.5F, -3.15F)),
                         namespace, basename+"_axe"));
 
         Item hoe = Registry.register(Registries.ITEM, Identifier.of(namespace, basename+"_hoe"),
                 new Hoe(
                         Items.IRON_HOE,
                         material,
-                        new Item.Settings()
-                                .attributeModifiers(HoeItem.createAttributeModifiers(material, -1.5F, -2.5F)),
+                        new Item.Settings(),
+//                                .attributeModifiers(HoeItem.createAttributeModifiers(material, -1.5F, -2.5F)),
                         namespace, basename+"_hoe"));
         Item pickaxe = Registry.register(Registries.ITEM, Identifier.of(namespace, basename+"_pickaxe"),
                 new Pickaxe(
                         Items.IRON_PICKAXE,
                         material,
-                        new Item.Settings()
-                                .attributeModifiers(PickaxeItem.createAttributeModifiers(material, 1.0F, -2.8F)),
+                        new Item.Settings(),
+//                                .attributeModifiers(PickaxeItem.createAttributeModifiers(material, 1.0F, -2.8F)),
                         namespace, basename+"_pickaxe"));
         Item shovel = Registry.register(Registries.ITEM, Identifier.of(namespace, basename+"_shovel"),
                 new Shovel(
                         Items.IRON_SHOVEL,
                         material,
-                        new Item.Settings()
-                                .attributeModifiers(ShovelItem.createAttributeModifiers(material, 1.5F, -3.0F)),
+                        new Item.Settings(),
+//                                .attributeModifiers(ShovelItem.createAttributeModifiers(material, 1.5F, -3.0F)),
                         namespace, basename+"_shovel"));
         Item sword = Registry.register(Registries.ITEM, Identifier.of(namespace, basename+"_sword"),
                 new Sword(
                         Items.IRON_SWORD,
                         material,
-                        new Item.Settings()
-                                .attributeModifiers(SwordItem.createAttributeModifiers(material, 3, -2.4F)),
+                        new Item.Settings(),
+//                                .attributeModifiers(SwordItem.createAttributeModifiers(material, 3, -2.4F)),
                         namespace, basename+"_sword"));
 
         return new Tools(axe, hoe, pickaxe, shovel, sword);

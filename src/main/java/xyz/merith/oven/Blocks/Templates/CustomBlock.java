@@ -7,9 +7,19 @@ import eu.pb4.polymer.blocks.api.PolymerTexturedBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.item.ItemStack;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.BlockRenderView;
+import org.jetbrains.annotations.Nullable;
+import xyz.nucleoid.packettweaker.PacketContext;
 
 /**
  * CustomBlock is a block class that extends the Minecraft Block class and implements the PolymerTexturedBlock interface.
@@ -55,43 +65,16 @@ public class CustomBlock extends Block implements PolymerTexturedBlock {
     }
 
     /**
-     * Generic method used for replacing BlockStates in case of no player context.
-     * It also controls some server-side things like collisions.
-     *
-     * @param state Server side/real BlockState.
-     * @return BlockState visible on client.
-     */
-    @Override
-    public BlockState getPolymerBlockState(BlockState state) {
-        return this.polymerBlock;
-    }
-
-    /**
-     * Main method used for replacing BlockStates for players.
+     * Main method used for replacing BlockStates for players
      * Keep in mind you should ideally use blocks with the same hitbox as generic/non-player ones!
      *
-     * @param state  Server side BlockState.
-     * @param player Player viewing it.
-     * @return Client side BlockState.
+     * @param state   Server side BlocksState
+     * @param context PacketContext this method is called with, might be empty!
+     * @return Client side BlockState
      */
     @Override
-    public BlockState getPolymerBlockState(BlockState state, ServerPlayerEntity player) {
-        return PolymerTexturedBlock.super.getPolymerBlockState(state, player);
-    }
-
-    /**
-     * This method is called when the block gets sent to the player.
-     * Allows adding client-only BlockEntities (for signs, heads, etc).
-     *
-     * @param blockState Real BlockState of the block.
-     * @param pos        Position of the block. Keep in mind it's mutable,
-     *                   so make sure to use {@link BlockPos.Mutable#toImmutable()}
-     *                   in case of using in packets, as it's reused for other positions!
-     * @param player     Player packets should be sent to.
-     */
-    @Override
-    public void onPolymerBlockSend(BlockState blockState, BlockPos.Mutable pos, ServerPlayerEntity player) {
-        PolymerTexturedBlock.super.onPolymerBlockSend(blockState, pos, player);
+    public BlockState getPolymerBlockState(BlockState state, PacketContext context) {
+        return this.polymerBlock;
     }
 
     /**
@@ -104,17 +87,5 @@ public class CustomBlock extends Block implements PolymerTexturedBlock {
     @Override
     public boolean forceLightUpdates(BlockState blockState) {
         return PolymerTexturedBlock.super.forceLightUpdates(blockState);
-    }
-
-    /**
-     * Overrides the breaking particle used by the block.
-     *
-     * @param state  The BlockState of the block.
-     * @param player The player breaking the block.
-     * @return The BlockState to be used for the breaking event.
-     */
-    @Override
-    public BlockState getPolymerBreakEventBlockState(BlockState state, ServerPlayerEntity player) {
-        return PolymerTexturedBlock.super.getPolymerBreakEventBlockState(state, player);
     }
 }

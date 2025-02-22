@@ -1,19 +1,13 @@
 package xyz.merith.oven.Tools.Templates;
 
 import eu.pb4.polymer.core.api.item.PolymerItem;
-import eu.pb4.polymer.resourcepack.api.PolymerModelData;
-import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import net.minecraft.item.*;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
+import xyz.nucleoid.packettweaker.PacketContext;
 
 /**
  * A custom implementation of an {@link SwordItem} that integrates with the Polymer API for custom item models.
  */
 public class Sword extends SwordItem implements PolymerItem {
-    private final PolymerModelData model;
-
     /**
      * Constructs a new Sword item with the specified properties.
      *
@@ -24,31 +18,11 @@ public class Sword extends SwordItem implements PolymerItem {
      * @param toolName    the name of the tool, used for generating the model identifier
      */
     public Sword(Item polymerItem, ToolMaterial material, Settings settings, String namespace, String toolName) {
-        super(material, settings);
-        this.model = PolymerResourcePackUtils.requestModel(polymerItem, Identifier.of(namespace, "item/"+toolName));
+        super(material, material.attackDamageBonus(), material.speed(), settings);
     }
 
-    /**
-     * Gets the Polymer item to be displayed for the given player.
-     *
-     * @param stack  the item stack
-     * @param player the player entity, can be null
-     * @return the Polymer item to be displayed
-     */
     @Override
-    public Item getPolymerItem(ItemStack stack, ServerPlayerEntity player) {
-        return this.model.item();
-    }
-
-    /**
-     * Gets the custom model data value for the Polymer item.
-     *
-     * @param itemStack the item stack
-     * @param player    the player entity, can be null
-     * @return the custom model data value
-     */
-    @Override
-    public int getPolymerCustomModelData(ItemStack itemStack, @Nullable ServerPlayerEntity player) {
-        return model.value();
+    public Item getPolymerItem(ItemStack itemStack, PacketContext context) {
+        return this.asItem();
     }
 }
