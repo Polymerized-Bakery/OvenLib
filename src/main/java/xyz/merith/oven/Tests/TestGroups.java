@@ -35,12 +35,14 @@ public class TestGroups {
         // Create new tools for testing
         OvenDoor.LOGGER.info("TEST: Registering Test Tools");
         ToolFactory.Tools NEW_TOOLS = new ToolFactory().registerTools("ovenlib", "test", TOOL_MATERIAL);
-        OvenDoor.LOGGER.info("TEST: Registering Test Armor");
-        ArmorFactory.Armors NEW_ARMOR = new ArmorFactory().registerArmors("ovenlib", "test");
-        OvenDoor.LOGGER.info("TEST: Registering Test Block: Solid Block");
-        Block NEW_SOLID_BLOCK = new BlockFactory().registerSolidBlock("ovenlib", "test_solid_block", AbstractBlock.Settings.create());
-        OvenDoor.LOGGER.info("TEST: Registering Test Block: Clear Block");
-        Block NEW_CLEAR_BLOCK = new BlockFactory().registerTransparentBlock("ovenlib", "test_clear_block", AbstractBlock.Settings.create());
+
+        // Checkpoint: Disable armor and block registration for now until item registration has been fixed
+//        OvenDoor.LOGGER.info("TEST: Registering Test Armor");
+//        ArmorFactory.Armors NEW_ARMOR = new ArmorFactory().registerArmors("ovenlib", "test");
+//        OvenDoor.LOGGER.info("TEST: Registering Test Block: Solid Block");
+//        Block NEW_SOLID_BLOCK = new BlockFactory().registerSolidBlock("ovenlib", "test_solid_block", AbstractBlock.Settings.create());
+//        OvenDoor.LOGGER.info("TEST: Registering Test Block: Clear Block");
+//        Block NEW_CLEAR_BLOCK = new BlockFactory().registerTransparentBlock("ovenlib", "test_clear_block", AbstractBlock.Settings.create());
 
         // Test Group with a translatable name and an icon
         OvenDoor.LOGGER.info("TEST: Registering Test Group 2");
@@ -53,12 +55,12 @@ public class TestGroups {
             e.add(NEW_TOOLS.PICKAXE);
             e.add(NEW_TOOLS.SHOVEL);
             e.add(NEW_TOOLS.SWORD);
-            e.add(NEW_ARMOR.HELMET);
-            e.add(NEW_ARMOR.BODY);
-            e.add(NEW_ARMOR.LEGGINGS);
-            e.add(NEW_ARMOR.BOOTS);
-            e.add(NEW_SOLID_BLOCK);
-            e.add(NEW_CLEAR_BLOCK);
+//            e.add(NEW_ARMOR.HELMET);
+//            e.add(NEW_ARMOR.BODY);
+//            e.add(NEW_ARMOR.LEGGINGS);
+//            e.add(NEW_ARMOR.BOOTS);
+//            e.add(NEW_SOLID_BLOCK);
+//            e.add(NEW_CLEAR_BLOCK);
         });
 
         // Register the fourth test group

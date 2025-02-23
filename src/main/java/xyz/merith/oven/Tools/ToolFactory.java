@@ -1,8 +1,7 @@
 package xyz.merith.oven.Tools;
 
 import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.registry.*;
 import net.minecraft.util.Identifier;
 import xyz.merith.oven.Tools.Templates.*;
 
